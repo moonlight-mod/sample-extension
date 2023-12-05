@@ -1,0 +1,14 @@
+{
+  "name": "sample-extension",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch"
+  },
+  "devDependencies": {
+    "@moonlight-mod/types": "file:./moonlight/packages/types",
+    "esbuild": "^0.19.3",
+    "esbuild-copy-static-files": "^0.1.0"
+  }
+}
