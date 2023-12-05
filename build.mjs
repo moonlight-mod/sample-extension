@@ -24,7 +24,8 @@ function makeConfig(ext, name) {
 
     treeShaking: true,
     bundle: true,
-    sourcemap: prod ? false : "inline",
+    minify: prod,
+    sourcemap: "inline",
 
     plugins: [
       copyStaticFiles({
