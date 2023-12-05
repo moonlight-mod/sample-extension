@@ -1,8 +1,10 @@
 {
   "id": "sampleExtension",
+  "version": "1.0.0",
   "meta": {
     "name": "Sample extension",
     "description": "Sample Moonlight extension",
-    "authors": ["You!"]
+    "authors": ["You!"],
+    "source": "https://github.com/moonlight-mod/sample-extension"
   }
 }
