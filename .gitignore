@@ -1,2 +1,3 @@
-dist/
-node_modules/
+/dist
+/repo
+/node_modules

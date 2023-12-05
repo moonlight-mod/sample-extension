@@ -4,9 +4,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "node build.mjs",
-    "dev": "node build.mjs --watch"
+    "dev": "node build.mjs --watch",
+    "repo": "node repo.mjs"
   },
   "devDependencies": {
+    "@electron/asar": "^3.2.8",
     "esbuild": "^0.19.3",
     "esbuild-copy-static-files": "^0.1.0"
   },
