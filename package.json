@@ -7,8 +7,10 @@
     "dev": "node build.mjs --watch"
   },
   "devDependencies": {
-    "@moonlight-mod/types": "file:./moonlight/packages/types",
     "esbuild": "^0.19.3",
     "esbuild-copy-static-files": "^0.1.0"
+  },
+  "dependencies": {
+    "@moonlight-mod/types": "^1.0.0"
   }
 }
