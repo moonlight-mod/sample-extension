@@ -57,21 +57,8 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
         id: "someLibrary"
       }
     ],
-    entrypoint: true,
-    run: (module, exports, require) => {
-      console.log("Hello from entrypoint!");
-
-      // You can use Webpack's require() function to load other Webpack modules.
-      // It is suggested to only use require() for other extensions' modules,
-      // and then use a library like Spacepack to locate Discord's modules
-      // (as module IDs can change).
-      const someLibrary = require("sampleExtension_someLibrary");
-      console.log("someLibrary exports:", someLibrary);
-
-      // Using the `moonlight` global, you can access data exposed from the
-      // Node.js side of the extension (including functions).
-      const natives = moonlight.getNatives("sampleExtension");
-      console.log("node exports:", natives);
-    }
+    entrypoint: true
+    // There is no `run` specified here, as this Webpack module is stored in a
+    // separate file. See `src/sampleExtension/webpackModules/entrypoint.ts`.
   }
 };

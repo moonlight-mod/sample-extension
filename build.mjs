@@ -13,11 +13,32 @@ function makeConfig(ext, name) {
     if (fs.existsSync(path)) entryPoints.push(path);
   }
 
+  const wpModulesDir = `./src/${ext}/webpackModules`;
+  if (fs.existsSync(wpModulesDir) && name === "index") {
+    const wpModules = fs.readdirSync(wpModulesDir);
+    for (const wpModule of wpModules) {
+      entryPoints.push(`./src/${ext}/webpackModules/${wpModule}`);
+    }
+  }
+
   if (entryPoints.length === 0) return null;
+
+  const wpImportPlugin = {
+    name: "webpackImports",
+    setup(build) {
+      build.onResolve({ filter: /^@moonlight-mod\/wp\// }, (args) => {
+        const wpModule = args.path.replace(/^@moonlight-mod\/wp\//, "");
+        return {
+          path: wpModule,
+          external: true
+        };
+      });
+    }
+  };
 
   return {
     entryPoints,
-    outfile: `./dist/${ext}/${name}.js`,
+    outdir: `./dist/${ext}`,
 
     format: "cjs",
     platform: "node",
@@ -31,7 +52,8 @@ function makeConfig(ext, name) {
       copyStaticFiles({
         src: `./src/${ext}/manifest.json`,
         dest: `./dist/${ext}/manifest.json`
-      })
+      }),
+      wpImportPlugin
     ]
   };
 }
