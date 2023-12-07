@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@moonlight-mod/types':
-    specifier: ^1.1.1
-    version: 1.1.1
+    specifier: ^1.1.2
+    version: 1.1.2
 
 devDependencies:
   '@electron/asar':
@@ -230,8 +230,8 @@ packages:
     dev: true
     optional: true
 
-  /@moonlight-mod/types@1.1.1:
-    resolution: {integrity: sha512-MYm5k7UHVDLVHt4v4ZJ80xzuIaN9AuUnFi/TT9X9efTYGIK/8T7wnVw0NMatm8xgARPiX6b4utvCjxL8ZR6Ytw==}
+  /@moonlight-mod/types@1.1.2:
+    resolution: {integrity: sha512-cJ8/lWdZPw7qfsTvOqocxKUNaAZJ5BwHalqPdxaKCbYgpcIztsFx3mB5B+bHZj2xBGxoADbQgUJp6galYNpmPQ==}
     dependencies:
       '@types/flux': 3.1.14
       '@types/node': 20.10.3
