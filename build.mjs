@@ -63,6 +63,15 @@ function makeConfig(ext, name) {
     minify: prod,
     sourcemap: "inline",
 
+    external: [
+      "electron",
+      "fs",
+      "path",
+      "module",
+      "events",
+      "original-fs"
+    ],
+
     plugins: [
       copyStaticFiles({
         src: `./src/${ext}/manifest.json`,
