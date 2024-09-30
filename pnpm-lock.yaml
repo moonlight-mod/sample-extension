@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@moonlight-mod/types':
-        specifier: ^1.1.8
-        version: 1.1.8
+        specifier: ^1.1.9
+        version: 1.1.9
     devDependencies:
       '@electron/asar':
         specifier: ^3.2.8
@@ -161,8 +161,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@moonlight-mod/types@1.1.8':
-    resolution: {integrity: sha512-1ea1vyX/wDYHoqfwlLcD6xbdpeOfL22dTDlMrTfaRBd/1MzTKQjmRnLdPsitpnfzYb2mIJqyosCMDc6udrTSBQ==}
+  '@moonlight-mod/types@1.1.9':
+    resolution: {integrity: sha512-c09ZeljtuYZWlGSKNprxmOeClv7iqBMjkb2JmsVO1oba40IK3dNkgbPJl+3gLJXVFAgflcoMQBOA7EmcYfS+/w==}
 
   '@types/fbemitter@2.0.35':
     resolution: {integrity: sha512-Xem6d7qUfmouCHntCrRYgDBwbf+WWRd6G+7WEFlEZFZ67LZXiYRvT2LV8wcZa6mIaAil95+ABQdKgB6hPIsnng==}
@@ -311,7 +311,7 @@ snapshots:
   '@esbuild/win32-x64@0.19.3':
     optional: true
 
-  '@moonlight-mod/types@1.1.8':
+  '@moonlight-mod/types@1.1.9':
     dependencies:
       '@types/flux': 3.1.14
       '@types/react': 18.2.42
