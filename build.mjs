@@ -4,6 +4,7 @@ import fs from "fs";
 
 const prod = process.env.NODE_ENV === "production";
 const watch = process.argv.includes("--watch");
+const clean = process.argv.includes("--clean");
 
 function makeConfig(ext, name) {
   const entryPoints = [];
@@ -46,10 +47,14 @@ function makeConfig(ext, name) {
     name: "buildLog",
     setup(build) {
       build.onEnd(() => {
-        console.log(`[${timeFormatter.format(new Date())}] [${ext}/${name}] build finished`);
+        console.log(
+          `[${timeFormatter.format(
+            new Date()
+          )}] [${ext}/${name}] build finished`
+        );
       });
     }
-  }
+  };
 
   return {
     entryPoints,
@@ -63,14 +68,7 @@ function makeConfig(ext, name) {
     minify: prod,
     sourcemap: "inline",
 
-    external: [
-      "electron",
-      "fs",
-      "path",
-      "module",
-      "events",
-      "original-fs"
-    ],
+    external: ["electron", "fs", "path", "module", "events", "original-fs"],
 
     plugins: [
       copyStaticFiles({
@@ -94,7 +92,9 @@ const config = exts
   .flat()
   .filter((c) => c !== null);
 
-if (watch) {
+if (clean) {
+  fs.rmSync("./dist", { recursive: true, force: true });
+} else if (watch) {
   await Promise.all(
     config.map(async (c) => {
       const ctx = await esbuild.context(c);

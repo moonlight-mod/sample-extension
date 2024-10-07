@@ -4,6 +4,7 @@
   "scripts": {
     "build": "node build.mjs",
     "dev": "node build.mjs --watch",
+    "clean": "node build.mjs --clean",
     "repo": "node repo.mjs"
   },
   "devDependencies": {
