@@ -25,40 +25,15 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
   completely overrides it, breaking other extensions that patch the same module,
   so use it wisely.
 */
-export const patches: Patch[] = [
-  {
-    find: '"USER_SETTINGS",',
-    replace: {
-      match: '"USER_SETTINGS","User Settings"',
-      replacement: '"USER_SETTINGS","hacked by sampleExtension lol"'
-    }
-  }
-];
+export const patches: Patch[] = [];
 
 export const webpackModules: Record<string, ExtensionWebpackModule> = {
-  someLibrary: {
+  dmrf: {
     entrypoint: true,
-    run: (module, exports, require) => {
-      console.log("Hello from someLibrary!");
-
-      // You can export your own data from a Webpack module for use in other places.
-      module.exports = "Hello from someLibrary's exports!";
-    }
-  },
-
-  entrypoint: {
-    // It is important to specify what dependencies your Webpack module requires.
-    // Without them, it may load before the dependencies, causing an error.
-    // Specify a string or RegExp (similar to `find` in patches), or an object
-    // containing the "ext" and "id" fields (for other extensions' modules).
     dependencies: [
-      {
-        ext: "sampleExtension",
-        id: "someLibrary"
-      }
-    ],
-    entrypoint: true
-    // There is no `run` specified here, as this Webpack module is stored in a
-    // separate file. See `src/sampleExtension/webpackModules/entrypoint.ts`.
+      'Queueing message to be sent',
+      { ext: "spacepack", id: "spacepack" },
+      { id: "discord/Dispatcher" },
+    ]
   }
 };
