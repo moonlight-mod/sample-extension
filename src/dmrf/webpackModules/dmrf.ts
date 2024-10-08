@@ -7,6 +7,7 @@ const module = spacepack.findByCode(COOL)[0].exports;
 
 const originalSend = module.Z.sendMessage;
 module.Z.sendMessage = async (...args: any[]) => {
+  // TODO change this to sendhook
   args[1].content = args[1].content.replace('https://x.com','https://fixvx.com');
   args[1].content = args[1].content.replace('http://x.com','http://fixvx.com');
   return originalSend.call(module.Z, ...args);
