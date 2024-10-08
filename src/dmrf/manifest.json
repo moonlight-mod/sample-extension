@@ -1,0 +1,12 @@
+{
+  "id": "dmrf",
+  "version": "1.0.0",
+  "apiLevel": 2,
+  "meta": {
+    "name": "Discord Message Rewrite Facility",
+    "tagline": "dont use this yet",
+    "description": "dont use this yet",
+    "authors": ["lun-4"],
+    "source": "https://github.com/lun-4/dmrf"
+  }
+}
