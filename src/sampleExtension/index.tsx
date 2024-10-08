@@ -27,10 +27,10 @@ import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 */
 export const patches: Patch[] = [
   {
-    find: '"USER_SETTINGS",',
+    find: ",USER_SETTINGS:",
     replace: {
-      match: '"USER_SETTINGS","User Settings"',
-      replacement: '"USER_SETTINGS","hacked by sampleExtension lol"'
+      match: ',USER_SETTINGS:"User Settings"',
+      replacement: ',USER_SETTINGS:"hacked by sampleExtension lol"'
     }
   }
 ];

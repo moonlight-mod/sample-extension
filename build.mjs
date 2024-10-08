@@ -60,7 +60,8 @@ function makeConfig(ext, name) {
     entryPoints,
     outdir: `./dist/${ext}`,
 
-    format: "cjs",
+    format: "iife",
+    globalName: "module.exports",
     platform: "node",
 
     treeShaking: true,
