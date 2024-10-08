@@ -15,13 +15,18 @@ module.Z.sendMessage = async (...args: any[]) => {
   const message = args[1];
   //args[1].content = args[1].content.replace('https://x.com','https://fixfx.com');
   //args[1].content = args[1].content.replace('http://x.com','http://fixfx.com');
-  await natives.sendHook(message);
+  console.log(message);
+  const drop = await natives.sendHook(message);
+  console.log(message);
+  if (!drop) console.warn("dropping on sendHook not supported yet");
   args[1] = message;
+  console.log(args);
+  console.log("call");
   return originalSend.call(module.Z, ...args);
 };
 
 async function reDispatcher(event: any) {
-  console.log("redispatch");
+  console.log("redispatch", event.type);
   // set all message content in messages array
   // NOTE thank u husky
   if (event.type === "LOAD_MESSAGES_SUCCESS") {
@@ -41,8 +46,10 @@ async function reDispatcher(event: any) {
       if (event.messages) Dispatcher.dispatch(event);
     }
   } else if (event.type == "MESSAGE_CREATE") {
-    const drop = natives.receiveHook(event.message);
+    console.log("redispatch msg create", event.message);
+    const drop = !(await natives.receiveHook(event.message));
     event.dmrf = true;
+    console.log("drop?", event.message.id, "?", drop);
     if (!drop) Dispatcher.dispatch(event);
   } else {
     console.error("dmrf redispatcher got incorrect event type " + event.type);
@@ -55,12 +62,10 @@ Dispatcher.addInterceptor((event) => {
   if (event.type === "LOAD_MESSAGES_SUCCESS") {
     reDispatcher(event);
     return true;
-  }
-
-  if (event.type == "MESSAGE_CREATE") {
+  } else if (event.type == "MESSAGE_CREATE") {
     reDispatcher(event);
     return true;
+  } else {
+    return false;
   }
-
-  return false;
 });
