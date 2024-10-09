@@ -12,26 +12,21 @@ natives.init();
 
 const originalSend = module.Z.sendMessage;
 module.Z.sendMessage = async (...args: any[]) => {
-  console.log("aAAA");
-  logger.warn("got sendMessage");
+  logger.trace("got sendMessage");
   const message = args[1];
-  //args[1].content = args[1].content.replace('https://x.com','https://fixfx.com');
-  //args[1].content = args[1].content.replace('http://x.com','http://fixfx.com');
-  logger.warn("handling sendMessage", message);
+  logger.trace("handling sendMessage", message);
   const result = await natives.sendHook(message);
-  logger.warn("handled", result);
+  logger.trace("handled", result);
   if (result == null) {
     logger.error("dropping on sendHook not supported yet");
     return;
   }
   args[1] = result;
-  logger.warn(args);
-  logger.warn("call");
   return originalSend.call(module.Z, ...args);
 };
 
 async function reDispatcher(event: any) {
-  logger.debug("redispatch", event.type);
+  logger.trace("redispatch", event.type);
   // set all message content in messages array
   // NOTE thank u husky
   if (event.type === "LOAD_MESSAGES_SUCCESS") {
