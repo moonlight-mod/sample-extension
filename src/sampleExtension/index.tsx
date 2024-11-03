@@ -3,10 +3,10 @@ import { ExtensionWebExports } from "@moonlight-mod/types";
 // https://moonlight-mod.github.io/ext-dev/webpack/#patching
 export const patches: ExtensionWebExports["patches"] = [
   {
-    find: ",USER_SETTINGS:",
+    find: /"User Settings",/g,
     replace: {
-      match: ',USER_SETTINGS:"User Settings"',
-      replacement: ',USER_SETTINGS:"hacked by sampleExtension lol"'
+      match: /"User Settings",/g,
+      replacement: '"hacked by sampleExtension lol",'
     }
   }
 ];
