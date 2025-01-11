@@ -24,6 +24,6 @@ export const webpackModules: ExtensionWebExports["webpackModules"] = {
   },
 
   someLibrary: {
-    entrypoint: true
+    // Keep this object, even if it's empty! It's required for the module to be loaded.
   }
 };
