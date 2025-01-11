@@ -21,15 +21,9 @@ export const webpackModules: ExtensionWebExports["webpackModules"] = {
       }
     ],
     entrypoint: true
-    // See `src/sampleExtension/webpackModules/entrypoint.ts` for the source of this module.
   },
 
   someLibrary: {
-    entrypoint: true,
-    run: (module, exports, require) => {
-      const logger = moonlight.getLogger("sampleExtension/someLibrary");
-      logger.info("Hello from someLibrary!");
-      module.exports = "Hello from someLibrary's exports!";
-    }
+    entrypoint: true
   }
 };
